@@ -22,6 +22,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: ${{ steps.get-flutter-version.outputs.version }}
+          channel: 'stable'
 
       - name: Install dependencies
         run: flutter pub get
