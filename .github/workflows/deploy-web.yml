@@ -11,12 +11,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      
+      - name: Get Flutter version
+        id: get-flutter-version
+        uses: zgosalvez/github-actions-get-flutter-version-env@v1
 
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.3.8'
-          channel: 'stable'
+          flutter-version: ${{ steps.get-flutter-version.outputs.version }}
 
       - name: Install dependencies
         run: flutter pub get
